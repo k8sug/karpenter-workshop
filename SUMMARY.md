@@ -1,3 +1,8 @@
 # Table of contents
 
-* [Page](README.md)
+* [Agenda](README.md)
+* [EKS Setup](eks-setup.md)
+* [Installing Karpenter](installing-karpenter.md)
+* [Key Components](key-components.md)
+* [Monitoring](monitoring.md)
+* [Superpowers](superpowers.md)
