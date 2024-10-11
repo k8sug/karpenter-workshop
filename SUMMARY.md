@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Agenda](README.md)
+  * [Workshop Structure](agenda/workshop-structure.md)
 * [EKS Setup](eks-setup.md)
 * [Installing Karpenter](installing-karpenter.md)
 * [Key Components](key-components.md)
