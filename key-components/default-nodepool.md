@@ -1,5 +1,11 @@
 # Default NodePool
 
+### NodePools
+
+* **Definition**: A NodePool in Karpenter sets constraints on the nodes that can be created and the pods that can run on those nodes. You can configure multiple NodePools to cater to different workloads or requirements within your Kubernetes cluster[1](https://karpenter.sh/docs/concepts/nodepools/)[4](https://karpenter.sh/v0.37/concepts/nodepools/).
+* **Configuration**: Each NodePool can have its own set of specifications, including instance types, zones, and taints. When you create additional NodePools, Karpenter will evaluate each one based on the pod's requirements and the constraints defined in the NodePools[1](https://karpenter.sh/docs/concepts/nodepools/)[3](https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner).
+* **Mutual Exclusivity**: It is recommended to design NodePools to be mutually exclusive, meaning that no pod should match multiple NodePools. If a pod matches multiple pools, Karpenter will use the one with the highest weight
+
 ````yaml
 ```yaml
 apiVersion: v1
