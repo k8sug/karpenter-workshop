@@ -6,6 +6,7 @@
 * [EKS Setup](eks-setup.md)
 * [Installing Karpenter](installing-karpenter/README.md)
   * [Default NodePool](installing-karpenter/default-nodepool.md)
+* [Install Prometheus Stack](install-prometheus-stack.md)
 * [Key Components](key-components.md)
 * [Monitoring](monitoring.md)
 * [Superpowers](superpowers.md)
