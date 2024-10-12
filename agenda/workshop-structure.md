@@ -37,7 +37,13 @@ Namespace, Tags and so forth
 
 Load test to trigger autoscaling
 
-{% embed url="https://k6.io/" %}
+```
+// Some code
+use kubectl scale in a python program
+
+```
+
+
 
 Prometheus and Grafana
 

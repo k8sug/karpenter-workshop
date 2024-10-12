@@ -29,6 +29,7 @@ mkdir -p ~/.bashrc.d
 cp /usr/share/bash-completion/bash_completion ~/.bashrc.d/
 echo '. <(eksdemo completion bash)' >> ~/.bashrc
 echo 'export AWS_REGION=us-west-2'  >> ~/.bashrc
+echo 'alai'
 complete -o default -F __start_kubectl k
 source ~/.bashrc
 ```
