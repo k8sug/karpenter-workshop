@@ -29,7 +29,7 @@ mkdir -p ~/.bashrc.d
 cp /usr/share/bash-completion/bash_completion ~/.bashrc.d/
 echo '. <(eksdemo completion bash)' >> ~/.bashrc
 echo 'export AWS_REGION=us-west-2'  >> ~/.bashrc
-echo 'alai'
+echo 'alias k=kubectl' >> ~/.bashrc
 complete -o default -F __start_kubectl k
 source ~/.bashrc
 ```
@@ -37,7 +37,7 @@ source ~/.bashrc
 \
 Validate Install
 
-To validate installation you can run the **`eksdemo version`** command and confirm you are running the latest version. The output will be similar to below:
+To validate installation, you can run the **`eksdemo version`** command and confirm you are running the latest version. The output will be similar to below:
 
 ```
 » eksdemo version
@@ -49,13 +49,7 @@ eksdemo: version.Info{Version:"0.16.0", Date:"2024-08-19T17:41:55Z", Commit:"74f
 It takes about 15minutes
 
 ```
-eksdemo create cluster blue --os bottlerocket -i t3.xlarge -N 1
-```
-
-Validate
-
-```
-eksdemo get cluster
+eksdemo create cluster blue --os bottlerocket -i t3.medium -N 1
 ```
 
 ## Install Karpenter
@@ -64,53 +58,18 @@ eksdemo get cluster
 eksdemo install karpenter -c blue
 ```
 
-
-
-## Create a "k8sug-workshop" user
-
-
-
-
-
-
-
-
-
-
+## install Prometheus And Karpenter Dashboards
 
 ```
-# Create IAM user
-aws iam create-user --user-name k8sug-workshop
-
-# Attach AdministratorAccess policy to the user
-aws iam attach-user-policy --user-name k8sug-workshop --policy-arn arn:aws:iam::aws:policy/AdministratorAccess
-
-# Create a login profile for the user with a specific password
-aws iam create-login-profile --user-name k8sug-workshop --password "K8SUG-handson" --no-password-reset-required
-
-# Output the username and password
-echo "User 'k8sug-workshop' created with the following credentials:"
-echo "Username: k8sug-workshop"
-echo "Password: K8SUG-handson"
-```
-
-```
-https://<your-account-id>.signin.aws.amazon.com/console
-
-```
-
-Install EKSCTL
-
-```
-wget https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz -O eksctl.tar.gz
+eksdemo install kube-prometheus-stack -c blue -P karpenter
+eksdemo install kube-prometheus-karpenter-dashboards -c blue
 ```
 
 
 
-```
-tar -xzf eksctl.tar.gz -C /tmp
-sudo mv /tmp/eksctl /usr/local/bin
-```
+
+
+
 
 
 

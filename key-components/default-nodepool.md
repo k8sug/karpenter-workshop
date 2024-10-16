@@ -60,33 +60,6 @@ items:
           operator: Gt
           values:
           - "2"
-  status:
-    conditions:
-    - lastTransitionTime: "2024-10-12T00:39:12Z"
-      message: ""
-      reason: NodeClassReady
-      status: "True"
-      type: NodeClassReady
-    - lastTransitionTime: "2024-10-12T00:39:12Z"
-      message: ""
-      reason: Ready
-      status: "True"
-      type: Ready
-    - lastTransitionTime: "2024-10-12T00:39:10Z"
-      message: ""
-      reason: ValidationSucceeded
-      status: "True"
-      type: ValidationSucceeded
-    resources:
-      cpu: "0"
-      ephemeral-storage: "0"
-      memory: "0"
-      nodes: "0"
-      pods: "0"
-kind: List
-metadata:
-  resourceVersion: ""
-
-```
+  
 ````
 
