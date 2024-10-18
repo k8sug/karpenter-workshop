@@ -3,7 +3,7 @@
 * [Agenda](README.md)
   * [Workshop Structure](agenda/workshop-structure.md)
   * [User's Journey Flow](agenda/users-journey-flow.md)
-* [Enviroment Setup](enviroment-setup.md)
+* [Enviroment Setup](eks-setup/README.md)
 * [Key Components](key-components/README.md)
   * [Default NodePool](key-components/default-nodepool.md)
   * [Default EC2NodeClass](key-components/default-ec2nodeclass.md)

@@ -6,9 +6,13 @@ description: This will set a cluster and all tools needed for this workshop
 
 ## 1 - Access AWS Console
 
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
 {% hint style="info" %}
 Set region to ap-southeast-2 Sydday and open CloudShell
 {% endhint %}
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 Get the bash script from github:
 
