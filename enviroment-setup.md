@@ -1,13 +1,44 @@
-# Bash Script
+---
+description: This will set a cluster and all tools needed for this workshop
+---
+
+# Enviroment Setup
+
+## 1 - Access AWS Console
+
+{% hint style="info" %}
+Set region to ap-southeast-2 Sydday and open CloudShell
+{% endhint %}
+
+Get the bash script from github:
+
+<pre data-title="karpenter-workshop-setup.sh" data-overflow="wrap" data-full-width="false"><code><strong>#execute this on CloudShell
+</strong><strong>curl -s -L "https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/heads/main/resources/karpenter-workshop-setup.sh" > karpenter-workshop-setup.sh
+</strong></code></pre>
+
+{% hint style="info" %}
+Change it to be executable
+{% endhint %}
+
+```
+#execute this on CloudShell
+chmod 744 karpenter-workshop-setup.sh
+```
+
+Run the script
+
+<pre><code>#execute this on CloudShell
+<strong>./karpenter-workshop-setup.sh
+</strong></code></pre>
+
+Below you can check what it is doing.
 
 ```bash
+
 #!/bin/bash
 
 # Access AWS Console
 # Note: Manual step required to log in to AWS Console
-
-echo "Setting AWS region to ap-southeast-2"
-export AWS_REGION="ap-southeast-2"
 
 # Open CloudShell
 # Note: Manual step to open AWS CloudShell in AWS Console
@@ -27,13 +58,11 @@ echo "Configuring bash completion"
 mkdir -p ~/.bashrc.d
 cp /usr/share/bash-completion/bash_completion ~/.bashrc.d/
 echo '. <(eksdemo completion bash)' >> ~/.bashrc
-echo 'export AWS_REGION=us-west-2' >> ~/.bashrc
+echo 'export AWS_REGION=ap-southeast-2' >> ~/.bashrc
 echo 'alias k=kubectl' >> ~/.bashrc
-complete -o default -F __start_kubectl k
 source ~/.bashrc
+complete -o default -F __start_kubectl k
 
-# Warning about missing annotation
-echo "Warning: resource servicemonitors/karpenter is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically."
 
 # Validate Installation
 echo "Validating eksdemo installation"
@@ -74,16 +103,21 @@ EOF
 
 kubectl apply -f servicemonitorpromethes-karpenter.yaml
 
+# Install Inflate App
+eksdemo install example-inflate -c blue -n inflate --replicas 0
 
 # Get Grafana address
+GRAFANA_ADDRESS=$(kubectl get service grafana -n monitoring -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 echo "Getting Grafana service HTTP address"
+echo "Grafana available at: http://$GRAFANA_ADDRESS" 
 echo "Username: admin"
 echo "Password: karpenter"
-GRAFANA_ADDRESS=$(kubectl get service grafana -n monitoring -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
-echo "Grafana available at: http://$GRAFANA_ADDRESS"
+echo "Grafana available at: http://$GRAFANA_ADDRESS" >> grafana-credentials.txt
+echo "Username: admin"  >> grafana-credentials.txt
+echo "Password: karpenter" >> grafana-credentials.txt
+echo "Credentials saved in grafana-credentials.txt"
 
 # Completion message
 echo "Setup completed successfully. Lets get started with Karpenter!"
-
 ```
 
