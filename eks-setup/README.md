@@ -4,7 +4,7 @@ description: This will set a cluster and all tools needed for this workshop
 
 # Enviroment Setup
 
-## 1 - Access AWS Console
+## 1: Access AWS Console
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
@@ -14,7 +14,9 @@ Set region to ap-southeast-2 Sydday and open CloudShell
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
-Get the bash script from github:
+## 2: Get and run script
+
+You may copy and paste the following commands in your CloudShell terminal
 
 <pre data-title="karpenter-workshop-setup.sh" data-overflow="wrap" data-full-width="false"><code><strong>#execute this on CloudShell
 </strong><strong>curl -s -L "https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/heads/main/resources/karpenter-workshop-setup.sh" > karpenter-workshop-setup.sh
@@ -34,6 +36,12 @@ Run the script
 <pre><code>#execute this on CloudShell
 <strong>./karpenter-workshop-setup.sh
 </strong></code></pre>
+
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption><p>It should look like this and it takes about 20minutes</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption><p>When is completes you will see this message</p></figcaption></figure>
+
+
 
 Below you can check what it is doing.
 
