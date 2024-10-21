@@ -30,7 +30,6 @@ function int2ip() {
 }
 
 # Extract base IP and prefix length
-
 VPC_BASE_IP=${VPC_CIDR_BLOCK%/*}
 VPC_PREFIX=${VPC_CIDR_BLOCK#*/}
 
@@ -83,92 +82,80 @@ TEAM_GREEN_CIDR=${AVAILABLE_SUBNETS[1]}
 echo "Team Purple CIDR: $TEAM_PURPLE_CIDR"
 echo "Team Green CIDR: $TEAM_GREEN_CIDR"
 
+# Delete existing Team Purple Subnet and Team Green Subnet
+EXISTING_PURPLE_SUBNET_ID=$(aws ec2 describe-subnets \
+  --filters "Name=tag:team,Values=purple" --query "Subnets[0].SubnetId" --output text)
+if [ "$EXISTING_PURPLE_SUBNET_ID" != "None" ] && [ -n "$EXISTING_PURPLE_SUBNET_ID" ]; then
+  aws ec2 delete-subnet --subnet-id "$EXISTING_PURPLE_SUBNET_ID"
+  echo "Deleted existing Team Purple Subnet: $EXISTING_PURPLE_SUBNET_ID"
+fi
 
-# Team Purple Subnet
+EXISTING_GREEN_SUBNET_ID=$(aws ec2 describe-subnets \
+  --filters "Name=tag:team,Values=green" --query "Subnets[0].SubnetId" --output text)
+if [ "$EXISTING_GREEN_SUBNET_ID" != "None" ] && [ -n "$EXISTING_GREEN_SUBNET_ID" ]; then
+  aws ec2 delete-subnet --subnet-id "$EXISTING_GREEN_SUBNET_ID"
+  echo "Deleted existing Team Green Subnet: $EXISTING_GREEN_SUBNET_ID"
+fi
+
+# Create Team Purple Subnet (Private)
 TEAM_PURPLE_SUBNET_ID=$(aws ec2 create-subnet \
   --vpc-id "$VPC_ID" \
   --cidr-block "$TEAM_PURPLE_CIDR" \
   --availability-zone "$(aws ec2 describe-availability-zones --query "AvailabilityZones[0].ZoneName" --output text)" \
-  --tag-specifications "ResourceType=subnet,Tags=[{Key=Name,Value=team-purple-subnet},{Key=karpenter.sh/discovery,Value=$CLUSTER_NAME},{Key=team,Value=purple}]" \
+  --tag-specifications "ResourceType=subnet,Tags=[{Key=Name,Value=team-purple-subnet},{Key=karpenter.sh/discovery,Value=$CLUSTER_NAME},{Key=team,Value=purple},{Key=kubernetes.io/cluster/$CLUSTER_NAME,Value=shared},{Key=kubernetes.io/role/internal-elb,Value=1}]" \
   --query 'Subnet.SubnetId' --output text)
 echo "Team Purple Subnet ID: $TEAM_PURPLE_SUBNET_ID"
 
-
-# Team Green Subnet
+# Create Team Green Subnet (Private)
 TEAM_GREEN_SUBNET_ID=$(aws ec2 create-subnet \
   --vpc-id "$VPC_ID" \
   --cidr-block "$TEAM_GREEN_CIDR" \
   --availability-zone "$(aws ec2 describe-availability-zones --query "AvailabilityZones[1].ZoneName" --output text)" \
-  --tag-specifications "ResourceType=subnet,Tags=[{Key=Name,Value=team-green-subnet},{Key=karpenter.sh/discovery,Value=$CLUSTER_NAME},{Key=team,Value=green}]" \
+  --tag-specifications "ResourceType=subnet,Tags=[{Key=Name,Value=team-green-subnet},{Key=karpenter.sh/discovery,Value=$CLUSTER_NAME},{Key=team,Value=green},{Key=kubernetes.io/cluster/$CLUSTER_NAME,Value=shared},{Key=kubernetes.io/role/internal-elb,Value=1}]" \
   --query 'Subnet.SubnetId' --output text)
 echo "Team Green Subnet ID: $TEAM_GREEN_SUBNET_ID"
 
+# Retrieve the NAT Gateway ID
+NAT_GATEWAY_ID=$(aws ec2 describe-nat-gateways \
+  --filter "Name=vpc-id,Values=$VPC_ID" "Name=state,Values=available" \
+  --query "NatGateways[0].NatGatewayId" --output text)
+echo "NAT Gateway ID: $NAT_GATEWAY_ID"
 
-# Create Security Group
-TEAM_PURPLE_SG=$(aws ec2 create-security-group \
-  --group-name team-purple-sg \
-  --description "Security group for Team Purple nodes" \
+# Create a route table for Team Purple Subnet and name it
+TEAM_PURPLE_ROUTE_TABLE_ID=$(aws ec2 create-route-table \
   --vpc-id "$VPC_ID" \
-  --query 'GroupId' --output text)
-echo "Team Purple Security Group ID: $TEAM_PURPLE_SG"
-
-# Inbound Rules: Allow all traffic within VPC
-aws ec2 authorize-security-group-ingress \
-  --group-id "$TEAM_PURPLE_SG" \
-  --protocol -1 \
-  --cidr "$VPC_CIDR_BLOCK"
-
-# Outbound Rules: Remove default outbound and allow only within VPC
-aws ec2 revoke-security-group-egress --group-id "$TEAM_PURPLE_SG" --protocol -1 --port all --cidr 0.0.0.0/0
-aws ec2 authorize-security-group-egress \
-  --group-id "$TEAM_PURPLE_SG" \
-  --protocol -1 \
-  --cidr "$VPC_CIDR_BLOCK"
-
-
-# Create Security Group
-TEAM_GREEN_SG=$(aws ec2 create-security-group \
-  --group-name team-green-sg \
-  --description "Security group for Team Green nodes" \
-  --vpc-id "$VPC_ID" \
-  --query 'GroupId' --output text)
-echo "Team Green Security Group ID: $TEAM_GREEN_SG"
-
-# Inbound Rules: Allow traffic from Team Purple SG
-aws ec2 authorize-security-group-ingress \
-  --group-id "$TEAM_GREEN_SG" \
-  --protocol -1 \
-  --source-group "$TEAM_PURPLE_SG"
-
-# Outbound Rules: Allow all (default)
-
-
-# Create Internet Gateway if not exists
-IGW_ID=$(aws ec2 describe-internet-gateways \
-  --filters Name=attachment.vpc-id,Values="$VPC_ID" \
-  --query 'InternetGateways[0].InternetGatewayId' --output text)
-
-if [ "$IGW_ID" = "None" ] || [ -z "$IGW_ID" ]; then
-  IGW_ID=$(aws ec2 create-internet-gateway \
-    --query 'InternetGateway.InternetGatewayId' --output text)
-  aws ec2 attach-internet-gateway --vpc-id "$VPC_ID" --internet-gateway-id "$IGW_ID"
-fi
-echo "Internet Gateway ID: $IGW_ID"
-
-# Create Route Table
-TEAM_GREEN_RT=$(aws ec2 create-route-table \
-  --vpc-id "$VPC_ID" \
+  --tag-specifications "ResourceType=route-table,Tags=[{Key=Name,Value=team-purple-route-table},{Key=karpenter.sh/discovery,Value=$CLUSTER_NAME},{Key=team,Value=purple},{Key=kubernetes.io/cluster/$CLUSTER_NAME,Value=shared}]" \
   --query 'RouteTable.RouteTableId' --output text)
-echo "Team Green Route Table ID: $TEAM_GREEN_RT"
+echo "Team Purple Route Table ID: $TEAM_PURPLE_ROUTE_TABLE_ID"
 
-# Create Route to IGW
-aws ec2 create-route \
-  --route-table-id "$TEAM_GREEN_RT" \
-  --destination-cidr-block 0.0.0.0/0 \
-  --gateway-id "$IGW_ID"
-
-# Associate Route Table with Team Green Subnet
+# Associate the route table with the Team Purple Subnet
 aws ec2 associate-route-table \
-  --subnet-id "$TEAM_GREEN_SUBNET_ID" \
-  --route-table-id "$TEAM_GREEN_RT"
+  --route-table-id "$TEAM_PURPLE_ROUTE_TABLE_ID" \
+  --subnet-id "$TEAM_PURPLE_SUBNET_ID"
 
+# Create a default route to the NAT Gateway for Team Purple
+aws ec2 create-route \
+  --route-table-id "$TEAM_PURPLE_ROUTE_TABLE_ID" \
+  --destination-cidr-block 0.0.0.0/0 \
+  --nat-gateway-id "$NAT_GATEWAY_ID"
+
+# Create a route table for Team Green Subnet and name it
+TEAM_GREEN_ROUTE_TABLE_ID=$(aws ec2 create-route-table \
+  --vpc-id "$VPC_ID" \
+  --tag-specifications "ResourceType=route-table,Tags=[{Key=Name,Value=team-green-route-table},{Key=karpenter.sh/discovery,Value=$CLUSTER_NAME},{Key=team,Value=green},{Key=kubernetes.io/cluster/$CLUSTER_NAME,Value=shared}]" \
+  --query 'RouteTable.RouteTableId' --output text)
+echo "Team Green Route Table ID: $TEAM_GREEN_ROUTE_TABLE_ID"
+
+# Associate the route table with the Team Green Subnet
+aws ec2 associate-route-table \
+  --route-table-id "$TEAM_GREEN_ROUTE_TABLE_ID" \
+  --subnet-id "$TEAM_GREEN_SUBNET_ID"
+
+# Create a default route to the NAT Gateway for Team Green
+aws ec2 create-route \
+  --route-table-id "$TEAM_GREEN_ROUTE_TABLE_ID" \
+  --destination-cidr-block 0.0.0.0/0 \
+  --nat-gateway-id "$NAT_GATEWAY_ID"
+
+# Output completion message
+echo "Subnets created and configured successfully."

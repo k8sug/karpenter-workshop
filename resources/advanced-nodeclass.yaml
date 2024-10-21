@@ -1,0 +1,90 @@
+# NodePool and EC2NodeClass definitions for Team Purple and Team Green
+
+# Define an EC2NodeClass resource for Team Purple
+apiVersion: karpenter.k8s.aws/v1
+kind: EC2NodeClass
+metadata:
+  name: team-purple-nodeclass # Name of the EC2NodeClass
+  labels:
+    karpenter.sh/discovery: blue # Label for discovery
+spec:
+  role: KarpenterNodeRole-blue # IAM role for the node
+  tags:
+    team: purple # Tag indicating the team
+  amiFamily: AL2 # Specify the AMI family
+  amiSelectorTerms:
+  - id: ami-01637a5ffbb75ef5c
+  - id: ami-0f9b86b5fcf375aca
+  subnetSelectorTerms:
+  - tags:
+      team: purple # Subnet tag for the team
+  securityGroupSelectorTerms:
+  - tags:
+      aws:eks:cluster-name: blue
+  - tags:
+      team: purple # Security group tag for the team
+    
+---
+# Define an EC2NodeClass resource for Team Green
+apiVersion: karpenter.k8s.aws/v1
+kind: EC2NodeClass
+metadata:
+  name: team-green-nodeclass # Name of the EC2NodeClass
+  labels:
+    karpenter.sh/discovery: blue # Label for discovery
+spec:
+  role: KarpenterNodeRole-blue # IAM role for the node
+  tags:
+    team: green # Tag indicating the team
+  amiFamily: AL2 # Specify the AMI family
+  amiSelectorTerms:
+  - id: ami-01637a5ffbb75ef5c
+  - id: ami-0f9b86b5fcf375aca
+  subnetSelectorTerms:
+  - tags:
+      team: green # Subnet tag for the team
+  securityGroupSelectorTerms:
+  - tags:
+      aws:eks:cluster-name: blue
+  - tags:
+      team: green # Security group tag for the team
+---
+# Define a NodePool resource for Team Purple
+apiVersion: karpenter.sh/v1
+kind: NodePool
+metadata:
+  name: team-purple-nodepool # Name of the NodePool
+spec:
+  template:
+    metadata:
+      labels:
+        team: purple # Label indicating the team
+    spec:
+      nodeClassRef:
+        group: karpenter.k8s.aws # Group of the referenced EC2NodeClass
+        kind: EC2NodeClass # Kind of the referenced resource
+        name: team-purple-nodeclass # Name of the referenced EC2NodeClass
+      requirements:
+      - key: "karpenter.sh/capacity-type" # Requirement key
+        operator: "In" # Requirement operator
+        values: ["spot"] # Requirement values
+---
+# Define a NodePool resource for Team Green
+apiVersion: karpenter.sh/v1
+kind: NodePool
+metadata:
+  name: team-green-nodepool
+spec:
+  template:
+    metadata:
+      labels:
+        team: green
+    spec:
+      nodeClassRef:
+        group: karpenter.k8s.aws
+        kind: EC2NodeClass
+        name: team-green-nodeclass
+      requirements:
+        - key: "karpenter.sh/capacity-type"
+          operator: "In"
+          values: ["spot"]

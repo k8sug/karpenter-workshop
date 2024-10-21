@@ -1,0 +1,46 @@
+
+---
+# Deployment for Team Purple and Team Green
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: team-purple-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: team-purple-app
+  template:
+    metadata:
+      labels:
+        app: team-purple-app
+        team: purple
+    spec:
+      nodeSelector:
+        team: purple
+      containers:
+        - name: curl-container
+          image: appropriate/curl
+          command: ["/bin/sh", "-c", "while true; do echo 'Team Purple Pod'; sleep 3600; done"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: team-green-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: team-green-app
+  template:
+    metadata:
+      labels:
+        app: team-green-app
+        team: green
+    spec:
+      nodeSelector:
+        team: green
+      containers:
+        - name: curl-container
+          image: appropriate/curl
+          command: ["/bin/sh", "-c", "while true; do echo 'Team Green Pod'; sleep 3600; done"]
