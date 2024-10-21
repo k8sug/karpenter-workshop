@@ -1,9 +1,11 @@
-# Default EC2NodeClass
+# EC2NodeClass
 
 ### EC2NodeClasses
 
-* **NodeClass Reference**: Each NodePool must reference an EC2NodeClass. This class defines specific configurations for the EC2 instances that Karpenter will provision. You can have multiple EC2NodeClasses defined, and different NodePools can reference the same or different classes as needed[5](https://karpenter.sh/v0.32/concepts/nodeclasses/)[6](https://aws.amazon.com/ko/blogs/containers/how-to-upgrade-amazon-eks-worker-nodes-with-karpenter-drift/).
-* **Flexibility**: This setup allows for flexibility in your architecture, enabling you to optimize costs and performance by selecting different instance types or configurations based on workload demands. For example, you might have one NodePool configured for general-purpose workloads using a specific EC2NodeClass, while another is optimized for high-memory workloads using a different class[2](https://aws.amazon.com/blogs/compute/applying-spot-to-spot-consolidation-best-practices-with-karpenter/)[3](https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner).
+[https://karpenter.sh/v1.0/concepts/nodeclasses/](https://karpenter.sh/v1.0/concepts/nodeclasses/)
+
+* **NodeClass Reference**: Each NodePool must reference an EC2NodeClass. This class defines specific configurations for the EC2 instances that Karpenter will provision. You can have multiple EC2NodeClasses defined, and different NodePools can reference the same or different classes as needed
+* **Flexibility**: This setup allows for flexibility in your architecture, enabling you to optimise costs and performance by selecting different instance types or configurations based on workload demands. For example, you might have one NodePool configured for general-purpose workloads using a specific EC2NodeClass, while another is optimised for high-memory workloads using a different class
 
 ```yaml
 apiVersion: v1
