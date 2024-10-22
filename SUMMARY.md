@@ -6,7 +6,7 @@
 * [Enviroment Setup](enviroment-setup/README.md)
   * [Getting AWS Lab Access](enviroment-setup/getting-aws-lab-access.md)
   * [Navigating AWS Console](enviroment-setup/navigating-aws-console.md)
-  * [Bootstrapping EKS Cluster](enviroment-setup/bootstrapping-eks-cluster.md)
+  * [Bootstrapping workshop's EKS cluster](enviroment-setup/bootstrapping-workshops-eks-cluster.md)
 * [Cluster Autoscalling 101](cluster-autoscalling-101.md)
 * [Karpenter Objects](karpenter-objects/README.md)
   * [NodePool](karpenter-objects/nodepool.md)
