@@ -12,22 +12,27 @@ To do this, you can create a NodePool each for Spot and On-Demand with disjoint 
 
 
 
-### Requirements
+### Steps
 
-* A Kubernetes cluster with Karpenter installed. You can use the blueprint we've used to test this pattern at the `cluster` folder in the root of this repository.
-* A `default` Karpenter NodePool as that's the one we'll use in this blueprint. You did this already in the ["Deploy a Karpenter Default EC2NodeClass and NodePool"](https://github.com/aws-samples/karpenter-blueprints/blob/main/README.md) section from this repository.
+Create a directory for this scenario.
 
+```
+mkdir cutcost && cd cutcost
+```
 
+Download the YAML manifests containing a sample deployment and two NodePools (one for On Demand and one for Spot instances).
 
 {% code overflow="wrap" %}
 ```
-#Create a directory for this scenario
-mkdir cut-cost
-cd cutcost
-#Download the YAML manifests
-curl -s -L "https://raw.githubusercontent.com/aws-samples/karpenter-blueprints/refs/heads/main/blueprints/od-spot-split/workload.yaml" > workload.yaml
-curl -s -L  "https://raw.githubusercontent.com/aws-samples/karpenter-blueprints/refs/heads/main/blueprints/od-spot-split/od-spot.yaml" > od-spot.yaml
-#Create the objects
+curl -s -L https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/heads/main/resources/od-spot-split/workload.yaml > workload.yaml
+curl -s -L https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/heads/main/resources/od-spot-split/od-spot.yaml > nodepool.yaml
+```
+{% endcode %}
+
+Create the resources in this folder.
+
+{% code overflow="wrap" %}
+```
 kubectl apply -f .
 ```
 {% endcode %}
@@ -36,22 +41,23 @@ kubectl apply -f .
 
 ### Results
 
-
-
 You can review the Karpenter logs and watch how it's deciding to launch multiple nodes following the workload constraints:
 
+{% code overflow="wrap" %}
 ```
 kubectl -n karpenter logs -l app.kubernetes.io/name=karpenter --all-containers=true -f --tail=20
 ```
+{% endcode %}
 
-Wait one minute and you should see the pods running within multiple nodes, run this command:
 
+
+Wait for one minute and you should see the pods running within multiple nodes, run this command:
+
+{% code overflow="wrap" %}
 ```
 kubectl get nodes -L karpenter.sh/capacity-type,beta.kubernetes.io/instance-type,karpenter.sh/nodepool,topology.kubernetes.io/zone -l karpenter.sh/initialized=true
 ```
-
-\
-
+{% endcode %}
 
 
 
