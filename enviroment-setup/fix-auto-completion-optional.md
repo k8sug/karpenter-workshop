@@ -15,11 +15,11 @@ source ~/.bashrc
 
 
 
-Now test the k alias with autocompletion:
+Now test the `k` alias with autocompletion:
 
 ```bash
 k get <PRESS-TAB>
 ```
 
-You should be able to use tab completion for kubectl commands through the k alias.
+You should be able to use tab completion for kubectl commands through the `k` alias.
 
