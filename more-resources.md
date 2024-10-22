@@ -1,3 +1,7 @@
+---
+icon: cloud-plus
+---
+
 # More Resources
 
 {% embed url="https://aws.amazon.com/blogs/containers/announcing-karpenter-1-0/" %}

@@ -1,4 +1,8 @@
-# Bootstrapping EKS Cluster
+---
+icon: gear-code
+---
+
+# Bootstrapping workshop's EKS cluster
 
 In this section, we will run a script inside CloudShell to set up the EKS cluster.
 

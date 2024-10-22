@@ -1,3 +1,7 @@
+---
+icon: monitor-waveform
+---
+
 # Setting Up Grafana for Monitoring
 
 In this section, we’ll guide you through the steps to access the Grafana dashboard, which has been installed in your Kubernetes cluster, and upload a custom dashboard to visualise metrics collected by Prometheus.

@@ -2,7 +2,7 @@
 description: Split Between On-Demand & Spot Instances
 ---
 
-# Cut Costs with Spot Instances
+# 💸 Cut Costs with Spot Instances
 
 ### Purpose
 

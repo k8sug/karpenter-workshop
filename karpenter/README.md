@@ -2,7 +2,7 @@
 description: Just-in-time Nodes for Any Kubernetes Cluster
 ---
 
-# Karpenter
+# 🪵 Karpenter
 
 ## Understand key concepts of Karpenter
 

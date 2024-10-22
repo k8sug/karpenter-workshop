@@ -1,4 +1,4 @@
-# Karpenter Out of The Box
+# 📦 Karpenter Out of The Box
 
 Karpenter, by default, is designed to efficiently manage Kubernetes cluster resources by dynamically scaling nodes according to workloads.&#x20;
 

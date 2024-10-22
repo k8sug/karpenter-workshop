@@ -1,3 +1,7 @@
+---
+icon: file-code
+---
+
 # EC2NodeClass
 
 
