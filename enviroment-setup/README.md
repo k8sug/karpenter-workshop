@@ -7,4 +7,5 @@ Overview of Setup Steps:
 
 1. [Getting AWS Lab Access](getting-aws-lab-access.md)
 2. [Navigating AWS Console](navigating-aws-console.md)
-3. [Bootstrapping EKS Cluster](bootstrapping-workshops-eks-cluster.md)
+3. [Bootstrapping Workshop's EKS Cluster](bootstrapping-workshops-eks-cluster.md)
+4. [Fix Auto Completion (optional)](fix-auto-completion-optional.md)

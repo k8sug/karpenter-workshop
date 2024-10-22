@@ -4,7 +4,7 @@
 * [⚙️ Enviroment Setup](enviroment-setup/README.md)
   * [Getting AWS Lab Access](enviroment-setup/getting-aws-lab-access.md)
   * [Navigating AWS Console](enviroment-setup/navigating-aws-console.md)
-  * [Bootstrapping workshop's EKS cluster](enviroment-setup/bootstrapping-workshops-eks-cluster.md)
+  * [Bootstrapping Workshop's EKS Cluster](enviroment-setup/bootstrapping-workshops-eks-cluster.md)
   * [Fix Auto Completion (optional)](enviroment-setup/fix-auto-completion-optional.md)
 * [Cluster Autoscaler 101](cluster-autoscaler-101.md)
 * [🪵 Karpenter](karpenter/README.md)
