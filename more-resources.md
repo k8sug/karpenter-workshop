@@ -3,8 +3,12 @@
 {% embed url="https://aws.amazon.com/blogs/containers/announcing-karpenter-1-0/" %}
 
 {% embed url="https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html" %}
+Karpenter Best Practices
+{% endembed %}
 
 {% embed url="https://github.com/aws-samples/karpenter-blueprints" %}
+
+{% embed url="https://grafana.com/blog/2023/11/09/how-grafana-labs-switched-to-karpenter-to-reduce-costs-and-complexities-in-amazon-eks/" %}
 
 {% embed url="https://aws.amazon.com/blogs/containers/how-slack-adopted-karpenter-to-increase-operational-and-cost-efficiency/" %}
 
