@@ -12,6 +12,10 @@ To do this, you can create a NodePool each for Spot and On-Demand with disjoint 
 
 
 
+### Price Comparison
+
+
+
 ### Steps
 
 Create a directory for this scenario.
