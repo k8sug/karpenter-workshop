@@ -18,3 +18,4 @@
   * [Multiple EC2NodeClasses](best-practices/multiple-ec2nodeclasses.md)
   * [Multiple NodePools](best-practices/multiple-nodepools.md)
 * [More Resources](more-resources.md)
+* [Cleanup (optional)](cleanup-optional.md)
