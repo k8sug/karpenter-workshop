@@ -8,7 +8,7 @@ description: Split Between On-Demand & Spot Instances
 
 This setup works if you're interested in having a portion the EKS nodes running using On-Demand instances, and another portion on Spot. For example, a split of 20% On-Demand, and 80% on Spot. You're can take advantage of the labels Karpenter adds automatically to each node, and use [Topology Spread Constraints (TSC)](https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/) within a `Deployment` or `Pod` to split capacity in a desired ratio.
 
-To do this, you can create a NodePool each for Spot and On-Demand with disjoint values for a unique new label called `capacity-spread`. Then, assign values to this label to configure the split. If you'd like to have a 20/80 split, you could add the values `["2","3","4","5"]` for the Spot NodePool, and `["1"]` for the On-Demand NodePool.
+To do this, you can create a NodePool each for Spot and On-Demand with disjoint values for a unique new label called [`capacity-spread`](https://karpenter.sh/docs/concepts/scheduling/#on-demandspot-ratio-split). Then, assign values to this label to configure the split. If you'd like to have a 20/80 split, you could add the values `["2","3","4","5"]` for the Spot NodePool, and `["1"]` for the On-Demand NodePool.
 
 
 
