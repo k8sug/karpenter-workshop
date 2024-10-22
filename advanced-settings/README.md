@@ -6,8 +6,8 @@ icon: wpexplorer
 
 Now that we've covered the fundamentals, let's dive into Karpenter's capabilities. In this workshop, we'll focus on two key scenarios:
 
-* **Scenario 1**: Reducing costs using **Spot Instances**.
-* **Scenario 2**: Managing **Custom Subnets** for more specific configurations.
+* **Scenario 1**: [Reducing costs using **Spot Instances**](cut-costs-with-spot-instances.md).
+* **Scenario 2**: [Managing **Custom Subnets** for more specific configurations](working-with-custom-subnets.md).
 
 These scenarios are based on the **aws-sample/karpenter-blueprints** structure. For additional scenarios, you can explore more at the following link:
 
