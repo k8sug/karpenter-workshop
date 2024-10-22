@@ -4,6 +4,8 @@
 
 Kubernetes requires nodes to run pods, providing capacity for both workloads and the Kubernetes system itself. Node autoscaling allows you to automatically adjust the resources in your cluster by either changing the number of nodes (horizontal scaling) or altering the capacity of existing nodes (vertical scaling). Kubernetes supports multidimensional automatic scaling to adapt to varying demands.
 
+{% embed url="https://kubernetes.io/docs/concepts/cluster-administration/cluster-autoscaling/" %}
+
 ## Automatic horizontal scaling <a href="#autoscaling-horizontal" id="autoscaling-horizontal"></a>
 
 ### Cluster Autoscaler (CA)

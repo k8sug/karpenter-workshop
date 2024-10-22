@@ -1,12 +1,20 @@
 # EC2NodeClass
 
-### EC2NodeClasses
+
+
+When you first installed Karpenter during this workshop, you set up a default EC2NodeClass. The NodePool enables configuration of AWS specific settings.
+
+{% hint style="info" %}
+See full documenation on
 
 [https://karpenter.sh/v1.0/concepts/nodeclasses/](https://karpenter.sh/v1.0/concepts/nodeclasses/)
 
-* **NodeClass Reference**: Each NodePool must reference an EC2NodeClass. This class defines specific configurations for the EC2 instances that Karpenter will provision. You can have multiple EC2NodeClasses defined, and different NodePools can reference the same or different classes as needed
-* **Flexibility**: This setup allows for flexibility in your architecture, enabling you to optimise costs and performance by selecting different instance types or configurations based on workload demands. For example, you might have one NodePool configured for general-purpose workloads using a specific EC2NodeClass, while another is optimised for high-memory workloads using a different class
+Example of EC2NodeClass and NodePool pair settings
 
+[https://github.com/aws/karpenter-provider-aws/tree/v1.0.3/examples/v1](https://github.com/aws/karpenter-provider-aws/tree/v1.0.3/examples/v1)
+{% endhint %}
+
+{% code title="default EC2NodeClass " %}
 ```yaml
 apiVersion: v1
 items:
@@ -102,4 +110,5 @@ kind: List
 metadata:
   resourceVersion: ""
 ```
+{% endcode %}
 

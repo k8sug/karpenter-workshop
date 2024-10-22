@@ -18,8 +18,58 @@ Acquire hands-on experience with Karpenter configuration and management, applyin
 
 Hands-on Activities:&#x20;
 
-EKS cluster setup: 15 minutes \
-Installing and configuring a basic Karpenter provider: 20 minutes \
-Implementing the EC2NodeClass and right-sizing NodePools: 40 mins \
-Monitoring Karpenter with Prometheus and Grafana: 10 minutes \
-Karpenter supercharged for dealing with different workloads and namespaces: 30 Minutes
+EKS cluster and workshop tool setup: 20 minutes \
+While it is setting up Lets learn about Cluster Autoscalling And Karpenter main concepts and the fundamentals objects NodePools and NodeClass.
+
+Once we have our enviroment set, lets import our K8SUG Karpenter Dashboard to grafana so we can monitor and start testing Karpenter.
+
+Default setting test. Deployment scale replicas up and donw and monitor what happens.
+
+Advanced Settings Scenarios
+
+Scenario 1: Cut Cost with Spot Instances
+
+Scenario 2: Working with Custom Subnets
+
+\
+\
+Setup
+
+AWS access
+
+Setup EKS  - (Cloud Formation/ SDK AWS/ Python/ Terraform/ Helm)
+
+Setup for Karpenter
+
+Setup for Prometheus Grafana&#x20;
+
+Setup for stress test ([https://youtu.be/LRswBUZ2OLM?si=rgzNFIWguGayZAFZ](https://youtu.be/LRswBUZ2OLM?si=rgzNFIWguGayZAFZ))
+
+Setup the simple kube app deploy to trigger autoscalling&#x20;
+
+
+
+## Configuration - Customisation
+
+* EC2NodeClass&#x20;
+* NodePools
+
+Instances Types and Family Selection
+
+AMI selection
+
+Network selection
+
+Workload selection
+
+Namespace, Tags and so forth
+
+
+
+## Testing and Monitoring
+
+Load test to trigger autoscalingOr a simpler option
+
+
+
+## Cleaning Up and Questions
