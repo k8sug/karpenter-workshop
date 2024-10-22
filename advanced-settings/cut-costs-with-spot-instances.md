@@ -12,6 +12,11 @@ To do this, you can create a NodePool each for Spot and On-Demand with disjoint 
 
 
 
+| NodePools                                                                  | Deployment                                                                |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| <img src="../.gitbook/assets/2 NodePools.png" alt="" data-size="original"> | <img src="../.gitbook/assets/3 Workload.png" alt="" data-size="original"> |
+|                                                                            |                                                                           |
+
 ### Why Spot Instances?
 
 Spot instances can offer cost savings of up to 90% compared to on-demand instances.​ Spot instances are ideal for workloads that are flexible and can tolerate interruptions since AWS reclaims these instances when demand for on-demand instances increases.
