@@ -12,9 +12,15 @@ To do this, you can create a NodePool each for Spot and On-Demand with disjoint 
 
 
 
-### Price Comparison
+### Reduce cost with Spot Instances
 
+Spot instances can offer cost savings of up to 90% compared to on-demand instances.​ Spot instances are ideal for workloads that are flexible and can tolerate interruptions since AWS reclaims these instances when demand for on-demand instances increases.
 
+<figure><img src="../.gitbook/assets/1 Save percentage (1).png" alt=""><figcaption><p>Savings over On-Demand m5.large instances in Melbourne region</p></figcaption></figure>
+
+{% hint style="info" %}
+Check real-time savings at [https://aws.amazon.com/ec2/spot/instance-advisor/](https://aws.amazon.com/ec2/spot/instance-advisor/)
+{% endhint %}
 
 ### Steps
 
@@ -74,5 +80,17 @@ Replace with the desired number of replicas to see how the changes impact the cl
 {% endhint %}
 
 ```bash
+kubectl scale deployments workload-split --replicas=<number>
+```
+
+
+
+### Cleanup
+
+To clean up the resources in this scenario, scale down the deployment by running the following command:
+
+```bash
 kubectl scale deployments workload-split --replicas=0
 ```
+
+This will stop the deployment by reducing the replicas to zero, releasing the compute resources used by the application.&#x20;
