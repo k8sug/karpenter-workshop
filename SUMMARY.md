@@ -16,7 +16,7 @@
   * [Cut Costs with Spot Instances](advanced-settings/cut-costs-with-spot-instances.md)
   * [Working with Custom Subnets](advanced-settings/working-with-custom-subnets.md)
 * [Best Practices](best-practices/README.md)
-  * [Multiple EC2NodeClasses](best-practices/multiple-ec2nodeclasses.md)
   * [Multiple NodePools](best-practices/multiple-nodepools.md)
+  * [Multiple EC2NodeClasses](best-practices/multiple-ec2nodeclasses.md)
 * [More Resources](more-resources.md)
 * [Cleanup (optional)](cleanup-optional.md)

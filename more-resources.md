@@ -4,10 +4,6 @@
 About Karpenter
 {% endembed %}
 
-{% embed url="https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html" %}
-Karpenter Best Practices
-{% endembed %}
-
 {% embed url="https://karpenter.sh/" %}
 Karpenter Docs
 {% endembed %}
