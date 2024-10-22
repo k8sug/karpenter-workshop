@@ -12,7 +12,7 @@
   * [NodePool](karpenter-objects/nodepool.md)
   * [EC2NodeClass](karpenter-objects/ec2nodeclass.md)
   * [Page](karpenter-objects/page.md)
-* [Monitoring](monitoring.md)
+* [Setting Up Grafana for Monitoring](setting-up-grafana-for-monitoring.md)
 * [Advanced Settings](advanced-settings/README.md)
   * [Cut Costs with Spot Instances](advanced-settings/cut-costs-with-spot-instances.md)
   * [Working with Custom Subnets](advanced-settings/working-with-custom-subnets.md)

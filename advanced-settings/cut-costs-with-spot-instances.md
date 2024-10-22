@@ -16,14 +16,14 @@ To do this, you can create a NodePool each for Spot and On-Demand with disjoint 
 
 Create a directory for this scenario.
 
-```
+```bash
 mkdir cutcost && cd cutcost
 ```
 
 Download the YAML manifests containing a sample deployment and two NodePools (one for On Demand and one for Spot instances).
 
 {% code overflow="wrap" %}
-```
+```bash
 curl -s -L https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/heads/main/resources/od-spot-split/workload.yaml > workload.yaml
 curl -s -L https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/heads/main/resources/od-spot-split/od-spot.yaml > nodepool.yaml
 ```
@@ -32,7 +32,7 @@ curl -s -L https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/heads
 Create the resources in this folder.
 
 {% code overflow="wrap" %}
-```
+```bash
 kubectl apply -f .
 ```
 {% endcode %}
@@ -44,7 +44,7 @@ kubectl apply -f .
 You can review the Karpenter logs and watch how it's deciding to launch multiple nodes following the workload constraints:
 
 {% code overflow="wrap" %}
-```
+```bash
 kubectl -n karpenter logs -l app.kubernetes.io/name=karpenter --all-containers=true -f --tail=20
 ```
 {% endcode %}
@@ -54,10 +54,21 @@ kubectl -n karpenter logs -l app.kubernetes.io/name=karpenter --all-containers=t
 Wait for one minute and you should see the pods running within multiple nodes, run this command:
 
 {% code overflow="wrap" %}
-```
+```bash
 kubectl get nodes -L karpenter.sh/capacity-type,beta.kubernetes.io/instance-type,karpenter.sh/nodepool,topology.kubernetes.io/zone -l karpenter.sh/initialized=true
 ```
 {% endcode %}
 
 
 
+### Scaling Replicas
+
+To play around with the number of replicas, run the following command. You can adjust the number of replicas as desired, and watch the changes on Grafana:
+
+{% hint style="info" %}
+Replace with the desired number of replicas to see how the changes impact the cluster’s performance and resource utilisation.
+{% endhint %}
+
+```bash
+kubectl scale deployments workload-split --replicas=0
+```
