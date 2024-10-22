@@ -70,4 +70,4 @@ The appearance of the dashboard may vary depending on the current state of your 
 
 By adjusting the timeline and refresh rate, you’ll be able to monitor real-time updates on your cluster’s performance, with the dashboard automatically refreshing every 5 seconds for the last 15 minutes.
 
-<figure><img src=".gitbook/assets/7 Adjust.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/7 Adjust (1).png" alt=""><figcaption></figcaption></figure>
