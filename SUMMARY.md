@@ -11,6 +11,7 @@
   * [EC2NodeClass](karpenter/ec2nodeclass.md)
   * [NodeClaims](karpenter/nodeclaims.md)
 * [Setting Up Grafana for Monitoring](setting-up-grafana-for-monitoring.md)
+* [Karpenter Out of The Box](karpenter-out-of-the-box.md)
 * [Advanced Settings](advanced-settings/README.md)
   * [Cut Costs with Spot Instances](advanced-settings/cut-costs-with-spot-instances.md)
   * [Working with Custom Subnets](advanced-settings/working-with-custom-subnets.md)
