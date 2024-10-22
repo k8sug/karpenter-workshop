@@ -5,7 +5,7 @@
   * [Getting AWS Lab Access](enviroment-setup/getting-aws-lab-access.md)
   * [Navigating AWS Console](enviroment-setup/navigating-aws-console.md)
   * [Bootstrapping workshop's EKS cluster](enviroment-setup/bootstrapping-workshops-eks-cluster.md)
-* [Cluster Autoscalling 101](cluster-autoscalling-101.md)
+* [Cluster Autoscaler 101](cluster-autoscaler-101.md)
 * [Karpenter](karpenter/README.md)
   * [NodePool](karpenter/nodepool.md)
   * [EC2NodeClass](karpenter/ec2nodeclass.md)
