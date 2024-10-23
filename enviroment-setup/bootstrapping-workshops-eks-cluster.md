@@ -2,7 +2,7 @@
 icon: gear-code
 ---
 
-# Bootstrapping workshop's EKS cluster
+# Bootstrapping Workshop's EKS Cluster
 
 In this section, we will run a script inside CloudShell to set up the EKS cluster.
 
@@ -35,7 +35,7 @@ curl -s -L "https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/head
 
 {% code overflow="wrap" %}
 ```bash
-chmod 744 karpenter-workshop-setup.sh
+chmod +x karpenter-workshop-setup.sh
 ```
 {% endcode %}
 
