@@ -17,7 +17,31 @@ This blueprint demonstrates how to configure Karpenter to provision nodes in cus
 
 ### Setup
 
+**Create a directory for this scenario**
 
+```bash
+cd ~
+mkdir subnets && cd subnets
+```
+
+**Download yaml and bash script files**
+
+{% code overflow="wrap" %}
+```bash
+curl -s -L https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/heads/main/resources/working-with-subnets/create-subnets.sh > create-subnets.sh
+chmod +x create-subnets.sh
+curl -s -L https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/heads/main/resources/working-with-subnets/delete-subnets.sh > delete-subnets.sh
+chmod +x delete-subnets.sh
+curl -s -L https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/heads/main/resources/working-with-subnets/subnets-nodeclass-nodepool.yaml > subnets-nodeclass-nodepool.yaml
+curl -s -L https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/heads/main/resources/working-with-subnets/workload-subnets.yaml > workload-subnets.yaml
+```
+{% endcode %}
+
+**Create Subnets**
+
+```bash
+./create-subnets.sh
+```
 
 ### Deploy
 
@@ -27,15 +51,10 @@ This blueprint demonstrates how to configure Karpenter to provision nodes in cus
 * **Security Groups**: Verify security groups have the following tags:
   * Common cluster tag: `aws:eks:cluster-name: blue`
 
-#### **Apply the EC2NodeClass and NodePool resources:**
+#### **Apply the EC2NodeClass and NodePool resources  and** Deploy Team-specific Applications
 
-```
-```
-
-#### Deploy Team-specific Applications
-
-```
-// Some code
+```bash
+kubectl apply -f .
 ```
 
 #### Verify Node Provisioning and Pod Scheduling
@@ -45,7 +64,7 @@ This blueprint demonstrates how to configure Karpenter to provision nodes in cus
 Verify that nodes are provisioned with the correct labels and configurations.
 
 ```bash
-bashCopy codekubectl get nodes --show-labels
+kubectl get nodes --show-labels
 ```
 
 **Check Pods:**
@@ -53,7 +72,7 @@ bashCopy codekubectl get nodes --show-labels
 Ensure that pods are running and scheduled on the correct nodes.
 
 ```bash
-bashCopy codekubectl get pods -o wide
+kubectl get pods -o wide
 ```
 
 **Describe a Node (Optional):**
@@ -61,12 +80,10 @@ bashCopy codekubectl get pods -o wide
 Inspect node details to confirm subnet and security group assignments.
 
 ```bash
-bashCopy codekubectl describe node <node-name>
+kubectl describe node <node-name>
 ```
 
 Replace `<node-name>` with the name of a node from the output of `kubectl get nodes`.
-
-
 
 ### Results
 
@@ -76,3 +93,18 @@ Replace `<node-name>` with the name of a node from the output of `kubectl get no
 * **Verification**: Nodes and pods can be verified to confirm they are correctly associated with their respective teams.
 
 By following this blueprint, you achieve a multi-tenant Kubernetes environment where each team's workloads are securely and efficiently managed within their own custom subnets.
+
+### Cleanup
+
+To clean up the resources in this scenario, delete sub by running the following command:
+
+```bash
+#from subnets directory
+kubectl delete -f .
+```
+
+Also delete subnets by executin `delete-subnets.sh`
+
+<pre class="language-bash"><code class="lang-bash"><strong>#from subnets directory
+</strong><strong>./delete-subnets.sh
+</strong></code></pre>
