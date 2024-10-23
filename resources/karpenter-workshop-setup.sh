@@ -20,12 +20,20 @@ sudo dnf install bash-completion -y
 echo "Configuring bash completion"
 mkdir -p ~/.bashrc.d
 cp /usr/share/bash-completion/bash_completion ~/.bashrc.d/
+
+# Enable eksdemo and kubectl bash completion
 echo '. <(eksdemo completion bash)' >> ~/.bashrc
 echo 'export AWS_REGION=ap-southeast-2' >> ~/.bashrc
-echo 'alias k=kubectl' >> ~/.bashrc
-source ~/.bashrc
-complete -o default -F __start_kubectl k
+echo 'source <(kubectl completion bash)' >> ~/.bashrc
 
+# Create an alias for kubectl
+echo 'alias k=kubectl' >> ~/.bashrc
+
+# Enable completion for the 'k' alias
+echo 'complete -o default -F __start_kubectl k' >> ~/.bashrc
+
+# Source the updated bashrc to apply changes immediately
+source ~/.bashrc
 
 # Validate Installation
 echo "Validating eksdemo installation"

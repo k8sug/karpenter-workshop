@@ -78,12 +78,12 @@ spec:
   template:
     metadata:
       labels:
-        team: green
+        team: green # Subnet tag for the team
     spec:
       nodeClassRef:
         group: karpenter.k8s.aws
         kind: EC2NodeClass
-        name: team-green-nodeclass
+        name: team-green-nodeclass # Name of the referenced EC2NodeClass
       requirements:
         - key: "karpenter.sh/capacity-type"
           operator: "In"
