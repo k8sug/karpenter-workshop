@@ -1,75 +1,54 @@
-# Agenda
+# 🔰 Introduction and Welcome
 
-Workshop Title: Optimizing K8S cluster Autoscaling with Karpenter: Cost-Efficiency and Reliability
+**Introduction and Welcome:**
 
-Target Audience: Managers/CTO, DevOps, Platform Engineers, K8S and Cloud Native community
+Welcome to the K8SUG CTL - Hands-on Workshop at NAB titled **"Optimizing K8S Cluster Autoscaling with Karpenter: Cost-Efficiency and Reliability."** In today’s session, we’ll dive into Karpenter, an open-source cluster autoscaler designed to scale Kubernetes workloads efficiently and reliably.
 
-Prerequisites: \
-Laptop with internet connectivity \
-Basic knowledge of Kubernetes and EKS (Elastic Kubernetes Service) \
-Access to AWS console \
-Basic understanding of infrastructure as code (IaC)
+Our target audience includes **Managers, CTOs, DevOps Engineers, Platform Engineers**, and members of the **Kubernetes and Cloud Native community**. Whether you’re focused on reducing operational costs or improving the resilience and reliability of your clusters, this workshop is designed to provide valuable insights and hands-on experience.
 
-By the end of this workshop, participants will: \
-Gain a comprehensive understanding of how Karpenter integrates with EKS. \
-Learn to configure Karpenter for cost-effective and reliable NodePools. \
-Implement strategies to optimize resource allocation, reducing operational costs. \
-Acquire hands-on experience with Karpenter configuration and management, applying best practices to optimize resource allocation.
+#### Agenda Overview:
 
-Hands-on Activities:&#x20;
+Throughout this hands-on workshop, you’ll learn how to leverage **Karpenter** to optimise your **EKS clusters** for cost and performance. By the end of this session, you will:
 
-EKS cluster and workshop tool setup: 20 minutes \
-While it is setting up Lets learn about Cluster Autoscalling And Karpenter main concepts and the fundamentals objects NodePools and NodeClass.
+* **Gain a deep understanding** of Karpenter’s integration with EKS.
+* Learn to **configure Karpenter** for cost-effective **NodePools** and **NodeClasses**.
+* Implement strategies for **resource optimisation**, which will help reduce operational costs.
+* Acquire practical skills in **monitoring**, **testing**, and **configuring** Karpenter with real-world scenarios.
 
-Once we have our enviroment set, lets import our K8SUG Karpenter Dashboard to grafana so we can monitor and start testing Karpenter.
+We’ll begin with setting up the workshop environment, including AWS Lab access, navigating the AWS console, and bootstrapping the EKS cluster. As the environment is set up, we’ll discuss **Cluster Autoscaling 101**, the difference between the native AWS autoscaler and Karpenter, and cover the historical context of AWS’s adoption of Karpenter through the CNCF.
 
-Default setting test. Deployment scale replicas up and donw and monitor what happens.
+Once the environment is ready, we will move forward with testing default settings, followed by advanced configurations to unlock **cost-saving opportunities** such as **Spot Instances** and **Custom Subnet** management, while monitoring it using **Grafana and Prometheus**.
 
-Advanced Settings Scenarios
+At the end of the workshop, you’ll be able to confidently apply **best practices** in **NodeClass** and **NodePool management**, ensuring your infrastructure is both reliable and cost-efficient.
 
-Scenario 1: Cut Cost with Spot Instances
+***
 
-Scenario 2: Working with Custom Subnets
+#### Hands-On Activities Include:
 
-\
-\
-Setup
+1. **EKS Cluster and Workshop Tool Setup**:
+   * AWS Lab access and console navigation.
+   * Karpenter, Prometheus, and Grafana installation.
+2. **Cluster Autoscaling Concepts**:
+   * Deep dive into **NodePools** and **NodeClasses**.
+   * Testing the default configurations with auto-scaling events (scale-up and scale-down).
+3. **Advanced Configuration Scenarios**:
+   * **Scenario 1**: Cutting costs with **Spot Instances**.
+   * **Scenario 2**: Managing **Custom Subnets** for more tailored configurations.
+4. **Testing and Monitoring**:
+   * Load tests to trigger autoscaling and monitor **Grafana dashboards**.
+5. **Wrap-Up and Cleanup**:
+   * Guidance on cleaning up AWS resources after the session.
+   * Q\&A to clarify any remaining questions.
 
-AWS access
+***
 
-Setup EKS  - (Cloud Formation/ SDK AWS/ Python/ Terraform/ Helm)
+#### Workshop Prerequisites:
 
-Setup for Karpenter
+* A laptop with internet connectivity.
+* Basic knowledge of **Kubernetes** and **EKS (Elastic Kubernetes Service)**.
+* Access to the **AWS Console**.
+* A basic understanding of **Infrastructure as Code (IaC)** principles.
 
-Setup for Prometheus Grafana&#x20;
+***
 
-Setup for stress test ([https://youtu.be/LRswBUZ2OLM?si=rgzNFIWguGayZAFZ](https://youtu.be/LRswBUZ2OLM?si=rgzNFIWguGayZAFZ))
-
-Setup the simple kube app deploy to trigger autoscalling&#x20;
-
-
-
-## Configuration - Customisation
-
-* EC2NodeClass&#x20;
-* NodePools
-
-Instances Types and Family Selection
-
-AMI selection
-
-Network selection
-
-Workload selection
-
-Namespace, Tags and so forth
-
-
-
-## Testing and Monitoring
-
-Load test to trigger autoscalingOr a simpler option
-
-
-
-## Cleaning Up and Questions
+We look forward to guiding you through this hands-on session where you will gain both the knowledge and practical skills to make your Kubernetes clusters more cost-effective and reliable with Karpenter. Let's get started!

@@ -1,4 +1,4 @@
-# Cleanup (optional)
+# 🧹 Cleanup (optional)
 
 To clean up the EKS cluster and all associated resources created during the workshop, run the following command in CloudShell:
 

@@ -1,3 +1,7 @@
+---
+icon: file-code
+---
+
 # NodePool
 
 When you first installed Karpenter, you set up a default NodePool. The NodePool imposes restrictions on the nodes that Karpenter can create and the pods that can run on those nodes.

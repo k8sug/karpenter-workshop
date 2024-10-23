@@ -1,3 +1,7 @@
+---
+icon: rectangle-terminal
+---
+
 # Navigating AWS Console
 
 Once you have accessed the AWS Console, it’s important to set the correct region and access the CloudShell terminal:

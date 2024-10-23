@@ -2,15 +2,11 @@
 description: Just-in-time Nodes for Any Kubernetes Cluster
 ---
 
-# Karpenter
+# 🪵 Karpenter
 
 ## Understand key concepts of Karpenter
 
 Karpenter simplifies cluster scaling by launching nodes to accommodate unschedulable pods and terminating them when they are no longer needed. Two fundamental objects in Karpenter are the **NodePool** and the **NodeClass**. This guide explores these concepts from the perspectives of a Kubernetes administrator and a Kubernetes application developer.
-
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
-
-
 
 ## For a Kubernetes Administrator
 

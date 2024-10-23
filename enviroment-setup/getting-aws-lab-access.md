@@ -1,3 +1,7 @@
+---
+icon: aws
+---
+
 # Getting AWS Lab Access
 
 To participate in the AWS Karpenter workshop, follow these steps to gain access to the AWS Lab:

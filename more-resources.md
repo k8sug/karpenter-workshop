@@ -1,12 +1,8 @@
+---
+icon: cloud-plus
+---
+
 # More Resources
-
-{% embed url="https://aws.amazon.com/blogs/containers/announcing-karpenter-1-0/" %}
-About Karpenter
-{% endembed %}
-
-{% embed url="https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html" %}
-Karpenter Best Practices
-{% endembed %}
 
 {% embed url="https://karpenter.sh/" %}
 Karpenter Docs
@@ -21,8 +17,6 @@ Karpenter Workshop
 {% endembed %}
 
 {% embed url="https://github.com/aws-samples/karpenter-blueprints" %}
-Karpenter Blueprints
-{% endembed %}
 
 {% embed url="https://grafana.com/blog/2023/11/09/how-grafana-labs-switched-to-karpenter-to-reduce-costs-and-complexities-in-amazon-eks/" %}
 Grafana Use-case

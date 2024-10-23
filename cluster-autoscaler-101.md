@@ -1,4 +1,8 @@
-# Cluster Autoscalling 101
+---
+icon: up-right-and-down-left-from-center
+---
+
+# Cluster Autoscaler 101
 
 ## Introduction
 
