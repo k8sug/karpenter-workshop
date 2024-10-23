@@ -67,7 +67,8 @@ spec:
       # Provisioned nodes will have these taints
       # Taints may prevent pods from scheduling if they are not tolerated by the pod.
       taints:
-        - key: team-purple
+        - key: team
+          value: purple
           effect: NoSchedule
       requirements:
       - key: "karpenter.sh/capacity-type" # Requirement key
@@ -92,7 +93,8 @@ spec:
       # Provisioned nodes will have these taints
       # Taints may prevent pods from scheduling if they are not tolerated by the pod.
       taints:
-        - key: team-green
+        - key: team
+          value: green
           effect: NoSchedule
       requirements:
         - key: "karpenter.sh/capacity-type"
