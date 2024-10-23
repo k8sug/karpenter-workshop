@@ -48,22 +48,38 @@ curl -s -L https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/heads
 2. Navigate to Dashboards in Grafana\
    Once logged into Grafana, click the toggle menu button (three horizontal bars on the left) and select Dashboards.
 
+<div data-full-width="true">
+
 <figure><img src=".gitbook/assets/2 Dashboard Menu.png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 3. Start the Dashboard Import\
    In the Dashboards section, click the New button in the top right, and select Import from the dropdown.
 
+<div data-full-width="true">
+
 <figure><img src=".gitbook/assets/3 Import.png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 4. Upload the Custom Dashboard JSON File\
    On the Import Dashboard page, click the “Upload JSON file” button. Afterwards, select the JSON file (k8sug-karpenter-grafana-dashboard.json) that you downloaded earlier.
 
+<div data-full-width="true">
+
 <figure><img src=".gitbook/assets/4 Upload JSON.png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 5. Import the Dashboard\
    Once you’ve selected the file, click Import to load the custom dashboard.
 
+<div data-full-width="true">
+
 <figure><img src=".gitbook/assets/5 Import JSON.png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 **Step 3: Visualise Your Metrics**\
 After completing the steps above, the custom Grafana dashboard will be displayed, showing real-time metrics collected by Prometheus. You can now explore the various panels and visualisations that provide insights into your EKS cluster and Karpenter’s activity.
@@ -74,4 +90,8 @@ The appearance of the dashboard may vary depending on the current state of your 
 
 By adjusting the timeline and refresh rate, you’ll be able to monitor real-time updates on your cluster’s performance, with the dashboard automatically refreshing every 5 seconds for the last 15 minutes.
 
+<div data-full-width="true">
+
 <figure><img src=".gitbook/assets/7 Adjust (1).png" alt=""><figcaption></figcaption></figure>
+
+</div>

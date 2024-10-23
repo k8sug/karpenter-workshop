@@ -1,5 +1,6 @@
 ---
 icon: aws
+description: if you are doing it out of an event, you can jump to the next page
 ---
 
 # Getting AWS Lab Access
@@ -15,4 +16,8 @@ To participate in the AWS Karpenter workshop, follow these steps to gain access 
 5. **Join the Event**: Follow the on-screen instructions to join the workshop event.
 6. **Open AWS Console**: Click on the button to open the AWS Console. You will be redirected to the AWS Management Console.
 
+<div data-full-width="true">
+
 <figure><img src="../.gitbook/assets/Join Event.png" alt=""><figcaption></figcaption></figure>
+
+</div>
