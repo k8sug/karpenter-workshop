@@ -1,5 +1,6 @@
 ---
 icon: aws
+description: if you are doing it out of an event, you can jump to the next page
 ---
 
 # Getting AWS Lab Access
