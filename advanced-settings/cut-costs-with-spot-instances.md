@@ -87,14 +87,6 @@ kubectl scale deployments workload-split --replicas=<number>
 
 ### Cleanup
 
-To clean up the resources in this scenario, scale down the deployment by running the following command:
-
-```bash
-kubectl scale deployments workload-split --replicas=0
-```
-
-This will stop the deployment by reducing the replicas to zero, releasing the compute resources used by the application. \
-\
 Before moving to the next scenario, remove all resources by running the following command:
 
 <pre class="language-bash"><code class="lang-bash"><strong>#from cutcost directory
