@@ -50,6 +50,15 @@ curl -s -L https://raw.githubusercontent.com/k8sug/karpenter-workshop/refs/heads
 #### Verify AWS Subnets and Security Groups
 
 * **Subnets**: Ensure AWS subnets are tagged with `team: purple` and `team: green`.
+
+```bash
+aws ec2 describe-subnets --filters "Name=tag:team,Values=purple"
+```
+
+```bash
+aws ec2 describe-subnets --filters "Name=tag:team,Values=green"
+```
+
 * **Security Groups**: Verify security groups have the following tags:
   * Common cluster tag: `aws:eks:cluster-name: blue`
 
