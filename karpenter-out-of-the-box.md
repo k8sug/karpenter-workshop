@@ -17,7 +17,11 @@ cat grafana-credentials.txt
 When a deployment such as "inflate" is scaled up, Karpenter automatically provisions new nodes to accommodate the increased resource demand.&#x20;
 
 {% hint style="info" %}
-Set replicas up to 64 and monitor in Grafana after each step
+Set replicas up to 64 and monitor in Grafana after each step.
+
+Optionally, you also may check&#x20;
+
+`kubectl get nodeclaim`&#x20;
 {% endhint %}
 
 ```bash
