@@ -52,11 +52,13 @@ kubectl scale deploy inflate -n inflate --replicas 64
 
 Conversely, when the deployment is scaled down, Karpenter consolidates the workloads onto fewer nodes and terminates unnecessary nodes, optimising resource utilisation and reducing costs.&#x20;
 
-{% code title="Set replicas to 2" %}
 ```bash
 kubectl scale deploy inflate -n inflate --replicas 2
 ```
-{% endcode %}
+
+```bash
+kubectl scale deploy inflate -n inflate --replicas 0
+```
 
 This behaviour ensures that the cluster remains responsive and cost-effective without manual intervention.
 
