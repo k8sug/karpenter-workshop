@@ -6,7 +6,11 @@ We encourage you to explore Karpenter further and continue experimenting with ad
 
 Thank you again for your participation! We look forward to seeing you at future workshops and K8SUG events! If you have any questions or feedback, feel free to reach out.
 
+Special thanks to Daniel Drentin, NAB and AWS for sponsoring this event.
 
+<figure><img src=".gitbook/assets/meetup.png" alt=""><figcaption></figcaption></figure>
 
-
+{% embed url="https://www.linkedin.com/company/k8sug" %}
+follow K8SUG on Linkedin
+{% endembed %}
 
