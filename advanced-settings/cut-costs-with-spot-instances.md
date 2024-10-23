@@ -52,8 +52,6 @@ kubectl apply -f .
 ```
 {% endcode %}
 
-
-
 ### Results
 
 You can review the Karpenter logs and watch how it's deciding to launch multiple nodes following the workload constraints:
@@ -63,8 +61,6 @@ You can review the Karpenter logs and watch how it's deciding to launch multiple
 kubectl -n karpenter logs -l app.kubernetes.io/name=karpenter --all-containers=true -f --tail=20
 ```
 {% endcode %}
-
-
 
 Wait for one minute and you should see the pods running within multiple nodes, run this command:
 
@@ -90,8 +86,6 @@ Replace with the desired number of replicas to see how the changes impact the cl
 kubectl scale deployments workload-split --replicas=<number>
 ```
 
-
-
 ### Cleanup
 
 To clean up the resources in this scenario, scale down the deployment by running the following command:
@@ -100,4 +94,10 @@ To clean up the resources in this scenario, scale down the deployment by running
 kubectl scale deployments workload-split --replicas=0
 ```
 
-This will stop the deployment by reducing the replicas to zero, releasing the compute resources used by the application.&#x20;
+This will stop the deployment by reducing the replicas to zero, releasing the compute resources used by the application. \
+\
+Before moving to the next scenario, remove all resources by running the following command:
+
+<pre class="language-bash"><code class="lang-bash"><strong>#from cutcost directory
+</strong><strong>kubectl delete -f .
+</strong></code></pre>
