@@ -18,6 +18,10 @@ spec:
     spec:
       nodeSelector:
         team: purple
+      tolerations:
+        - key: "team"
+          value: "purple"
+          effect: "NoSchedule"
       containers:
         - name: curl-container
           image: appropriate/curl
@@ -40,6 +44,10 @@ spec:
     spec:
       nodeSelector:
         team: green
+      tolerations:
+        - key: "team"
+          value: "green"
+          effect: "NoSchedule"
       containers:
         - name: curl-container
           image: appropriate/curl

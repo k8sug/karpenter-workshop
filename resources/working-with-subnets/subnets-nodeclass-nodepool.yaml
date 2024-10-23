@@ -64,6 +64,11 @@ spec:
         group: karpenter.k8s.aws # Group of the referenced EC2NodeClass
         kind: EC2NodeClass # Kind of the referenced resource
         name: team-purple-nodeclass # Name of the referenced EC2NodeClass
+      # Provisioned nodes will have these taints
+      # Taints may prevent pods from scheduling if they are not tolerated by the pod.
+      taints:
+        - key: team-purple
+          effect: NoSchedule
       requirements:
       - key: "karpenter.sh/capacity-type" # Requirement key
         operator: "In" # Requirement operator
@@ -84,6 +89,11 @@ spec:
         group: karpenter.k8s.aws
         kind: EC2NodeClass
         name: team-green-nodeclass # Name of the referenced EC2NodeClass
+      # Provisioned nodes will have these taints
+      # Taints may prevent pods from scheduling if they are not tolerated by the pod.
+      taints:
+        - key: team-green
+          effect: NoSchedule
       requirements:
         - key: "karpenter.sh/capacity-type"
           operator: "In"
