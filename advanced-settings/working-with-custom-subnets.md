@@ -100,7 +100,7 @@ To clean up the resources in this scenario, delete sub by running the following 
 
 ```bash
 #from subnets directory
-kubectl delete -f
+kubectl delete -f .
 ```
 
 Also delete subnets by executin `delete-subnets.sh`
