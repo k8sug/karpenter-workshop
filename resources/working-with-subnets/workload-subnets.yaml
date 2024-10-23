@@ -24,8 +24,9 @@ spec:
           effect: "NoSchedule"
       containers:
         - name: purple-container
-          image: appropriate/curl
+          image: alpine
           command: ["/bin/sh", "-c", "while true; do echo 'Team Purple Pod'; sleep 3600; done"]
+
 
 ---
 apiVersion: apps/v1
@@ -51,5 +52,5 @@ spec:
           effect: "NoSchedule"
       containers:
         - name: green-container
-          image: appropriate/curl
+          image: alpine
           command: ["/bin/sh", "-c", "while true; do echo 'Team Green Pod'; sleep 3600; done"]
