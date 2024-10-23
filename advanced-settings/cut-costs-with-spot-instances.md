@@ -15,7 +15,6 @@ To do this, you can create a NodePool each for Spot and On-Demand with disjoint 
 | NodePools                                                                  | Deployment                                                                |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | <img src="../.gitbook/assets/2 NodePools.png" alt="" data-size="original"> | <img src="../.gitbook/assets/3 Workload.png" alt="" data-size="original"> |
-|                                                                            |                                                                           |
 
 ### Why Spot Instances?
 
