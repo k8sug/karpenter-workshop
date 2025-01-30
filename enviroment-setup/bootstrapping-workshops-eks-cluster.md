@@ -51,7 +51,7 @@ chmod +x karpenter-workshop-setup.sh
 
 {% code overflow="wrap" %}
 ```bash
-./karpenter-workshop-setup.sh
+source karpenter-workshop-setup.sh
 ```
 {% endcode %}
 
